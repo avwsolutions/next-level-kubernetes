@@ -1,0 +1,14 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-get-say-hello
+  namespace: kube-public
+spec:
+  endpointSelector:
+    matchLabels:
+      app: grpcbin
+  ingress:
+  - toPorts:
+    - ports:
+      - port: "9001"
+        protocol: TCP
